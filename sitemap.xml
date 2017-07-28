@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://leegohi.com/2017/07/28/nginx-exit-status/</loc>
+    
+    <lastmod>2017-07-28T02:40:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://leegohi.com/2017/07/22/docker-mongo-auth-images/</loc>
     
     <lastmod>2017-07-22T02:38:00.000Z</lastmod>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leegohi.com/"/>
-  <updated>2017-07-22T02:38:00.000Z</updated>
+  <updated>2017-07-28T02:40:20.000Z</updated>
   <id>http://leegohi.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx_exit_status</title>
+    <link href="http://leegohi.com/2017/07/28/nginx-exit-status/"/>
+    <id>http://leegohi.com/2017/07/28/nginx-exit-status/</id>
+    <published>2017-07-28T02:15:52.000Z</published>
+    <updated>2017-07-28T02:40:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nginx-amp-http-status"><a href="#nginx-amp-http-status" class="headerlink" title="nginx &amp; http status"></a>nginx &amp; http status</h1><p>这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(401)</div></pre></td></tr></table></figure>
+<p>结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.</p>
+<blockquote>
+<p>ngx.exit</p>
+</blockquote>
+<p>syntax: ngx.exit(status)</p>
+<p>context: rewrite_by_lua<em>, access_by_lua</em>, content_by_lua<em>, header_filter_by_lua</em>, ngx.timer.<em>, balancer_by_lua</em>, ssl_certificate_by_lua<em>, ssl_session_fetch_by_lua</em>, ssl_session_store_by_lua*</p>
+<p>When status &gt;= 200 (i.e., ngx.HTTP_OK and above), it will interrupt the execution of the current request and return status code to nginx.</p>
+<p>When status == 0 (i.e., ngx.OK), it will only quit the current phase handler (or the content handler if the content_by_lua* directive is used) and continue to run later phases (if any) for the current request.</p>
+<p>说的很清楚, 大于200的状态会通知到nginx, 通知个毛线.</p>
+<p>没办法只有做了一下实验</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ngx.exit(401)</div><div class="line"></div><div class="line">response: (status 401)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(401)</div><div class="line"></div><div class="line">response: hello world (status 200)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ngx.status = 401</div><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(401)</div><div class="line"></div><div class="line">response: hello world (status 401)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ngx.status = 401</div><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(200)</div><div class="line"></div><div class="line">response: hello world (status 401)</div></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>如果要返回异常状态, 请务必手动写上ngx.status</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nginx-amp-http-status&quot;&gt;&lt;a href=&quot;#nginx-amp-http-status&quot; class=&quot;headerlink&quot; title=&quot;nginx &amp;amp; http status&quot;&gt;&lt;/a&gt;nginx &amp;amp; http stat
+    
+    </summary>
+    
+    
+      <category term="nginx lua openresty" scheme="http://leegohi.com/tags/nginx-lua-openresty/"/>
+    
+  </entry>
   
   <entry>
     <title>再也不用担心设置Mongo的Auth啦</title>
