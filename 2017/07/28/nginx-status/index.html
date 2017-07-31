@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="nginx &amp;amp; http status这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ng">
+<meta name="description" content="这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ngx.exit(status) context:">
 <meta name="keywords" content="nginx lua openresty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx_exit_status">
+<meta property="og:title" content="nginx 退出时的状态坑">
 <meta property="og:url" content="http://leegohi.com/2017/07/28/nginx-status/index.html">
 <meta property="og:site_name" content="LeeGoHi">
-<meta property="og:description" content="nginx &amp;amp; http status这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ng">
-<meta property="og:updated_time" content="2017-07-31T06:20:00.000Z">
+<meta property="og:description" content="这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ngx.exit(status) context:">
+<meta property="og:updated_time" content="2017-07-31T06:22:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx_exit_status">
-<meta name="twitter:description" content="nginx &amp;amp; http status这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ng">
+<meta name="twitter:title" content="nginx 退出时的状态坑">
+<meta name="twitter:description" content="这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候 12ngx.say(&amp;quot;hello world&amp;quot;)ngx.exit(401) 结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.  ngx.exit syntax: ngx.exit(status) context:">
 
 
 
@@ -133,7 +133,7 @@
 
 
 
-  <title> nginx_exit_status | LeeGoHi </title>
+  <title> nginx 退出时的状态坑 | LeeGoHi </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +293,7 @@
             
             
               
-                nginx_exit_status
+                nginx 退出时的状态坑
               
             
           </h1>
@@ -326,7 +326,7 @@
 
           
           
-             <span id="/2017/07/28/nginx-status/" class="leancloud_visitors" data-flag-title="nginx_exit_status">
+             <span id="/2017/07/28/nginx-status/" class="leancloud_visitors" data-flag-title="nginx 退出时的状态坑">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -355,7 +355,7 @@
       
 
       
-        <h1 id="nginx-amp-http-status"><a href="#nginx-amp-http-status" class="headerlink" title="nginx &amp; http status"></a>nginx &amp; http status</h1><p>这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候</p>
+        <p>这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(401)</div></pre></td></tr></table></figure>
 <p>结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.</p>
 <blockquote>
@@ -549,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx-amp-http-status"><span class="nav-number">1.</span> <span class="nav-text">nginx & http status</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.0.1.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>

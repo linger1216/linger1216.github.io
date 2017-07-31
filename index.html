@@ -295,7 +295,7 @@
               
                 
                 <a class="post-title-link" href="/2017/07/28/nginx-status/" itemprop="url">
-                  nginx_exit_status
+                  nginx 退出时的状态坑
                 </a>
               
             
@@ -329,7 +329,7 @@
 
           
           
-             <span id="/2017/07/28/nginx-status/" class="leancloud_visitors" data-flag-title="nginx_exit_status">
+             <span id="/2017/07/28/nginx-status/" class="leancloud_visitors" data-flag-title="nginx 退出时的状态坑">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -360,7 +360,7 @@
       
         
           
-            <h1 id="nginx-amp-http-status"><a href="#nginx-amp-http-status" class="headerlink" title="nginx &amp; http status"></a>nginx &amp; http status</h1><p>这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候</p>
+            <p>这两天写程序时发现了一些有趣的行为, 当我调用下面语句, 准备返回一个错误的时候</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ngx.say(&quot;hello world&quot;)</div><div class="line">ngx.exit(401)</div></pre></td></tr></table></figure>
 <p>结果response http status 返回200, 这真是日了狗了, 调试到最后是这样的结果, 任谁也没法接受, 看看文档吧.</p>
 <blockquote>
