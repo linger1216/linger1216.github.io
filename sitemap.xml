@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://leegohi.com/2017/08/03/lua-and-or/</loc>
+    
+    <lastmod>2017-08-03T08:38:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://leegohi.com/2017/07/28/nginx-status/</loc>
     
     <lastmod>2017-07-31T06:22:47.000Z</lastmod>
